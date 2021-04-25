@@ -1,12 +1,3 @@
-import pyscreenshot
-import time
+from subprocess import call
 
-x=1
-while x<2:
-    image = pyscreenshot.grab(bbox=(303, 392, 235, 235))
-
-    image.show()
-    image.save('/Users/dominicesposito/Desktop/Screenshots')
-    x+=1
-    time.sleep(2)
-    print('Done')
+call(["screencapture", "-R305,235,90,30", "screenshot.jpg"]) # Captures area of screen
