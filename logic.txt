@@ -1,0 +1,32 @@
+1. Take screenshot and extracts the balance from image to float
+  - Find pixel coordinates of the total balance amount
+2. Click the $1 chip at the bottom of the screen
+  - Find mouse coordinates of the $1 chip
+  - Make the bot click on specified coordinate
+3. Click the "Player" option to place bet
+  - Find mouse coordinates of the the "Player" option
+  - Make the bot click on specified coordinates
+4. Click on "Deal" option to start gambling
+  - Find mouse coordinate of the "Deal" option
+  - Make the bot click on the specified coordinate
+5. Set a timer for x amount for the transaction to take place
+
+
+6. Find out if bot has Won/Lost round
+  - Take a screenshot of the balance and compares to previous balance
+7. Create "if/else" statement that determines to "re-bet" or "double-up"
+  - If "re-bet": Click the "re-bet" option
+    - Find mouse coordinates for the "re-bet" option
+    - Make the bot click on the specified coordinate
+  - If "double-up": Click on "double-up" option
+    - Find mouse coordinates for the "double-up" option
+    - Make the bot click on the specified coordinate
+8. Create failsafe incase the bot loses 9x times in a row
+  - Click on the $1 chip at the bottom of the screen
+    - Find mouse coordinates of the $1 chip
+    - Make the bot click on specified coordinate
+    - Start again from 1.
+9. If a tie happens click the "re-bet" option
+  - Take a screenshot of the balance and compares to previous balance
+  - Find mouse coordinates for the "re-bet" option
+  - Make the bot click on the specified coordinate
