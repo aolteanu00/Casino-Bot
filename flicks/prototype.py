@@ -3,6 +3,12 @@ import os
 import pyautogui
 from PIL import Image
 
+print("*")
+print("*")
+print("*")
+print("DRIPBOT IS LIVE")
+print("_________________________________________________________________________")
+
 #CAPTURES A SCREEN GRAB OF CURRENT BALANCE
 call(["screencapture", "-R305,235,90,30", "screenshot7.jpg"]) # Captures area of screen
 
@@ -16,7 +22,7 @@ os.system('tesseract screenshot7.jpg --psm 6')
 #EXAMPLE FOR LOOP
 #x = 0
 #while x < 10:
-#    pyautogui.click(x=1154, y=544, clicks=1, button='left')
+#    pyautogui.click(x=1154, y=544, clicks=0, button='left')
 #    pyautogui.click(x=1154, y=544, clicks=1, button='left')
 #    pyautogui.click(interval = 7)
 #    x+=1
@@ -29,3 +35,8 @@ def black_and_white(input_image_path, output_image_path):
 
 #if __name__ == '__main__':
 #    black_and_white('screenshot2.jpg','bw3_screenshot.jpg')
+print("_________________________________________________________________________")
+print("DRIPBOT OUT")
+print("*")
+print("*")
+print("*")
