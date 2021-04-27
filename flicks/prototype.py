@@ -11,10 +11,10 @@ print("DRIPBOT IS LIVE")
 print("_________________________________________________________________________")
 
 #CAPTURES SCREENGRAB, SAVES TO SAME DIRECTORY
-call(["screencapture", "-R305,235,90,30", "test.png"])
+call(["screencapture", "-R305,235,90,30", "test.jpg"])
 
 #PILLOW IMAGE MANIPULATION
-image = Image.open('test.png')
+image = Image.open('test.jpg')
 image.show()
 
 image2 = image.resize((1920,1080))
@@ -47,6 +47,7 @@ image4 = Image.open('test4.png')
 image4.show()
 
 #OCR ANALYZES SCREENGRAB AND PROVIDES A .TXT FILE INTERPRETATION IN THE SAME DIRECTORY
+os.system('tesseract test.jpg test')
 os.system('tesseract test1.png test1')
 os.system('tesseract test2.png test2')
 #os.system('tesseract test3.png tess.txt')
