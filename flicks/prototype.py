@@ -1,7 +1,7 @@
 from subprocess import call
 import os
 import pyautogui
-from PIL import Image, ImageChops
+from PIL import Image
 import PIL.ImageOps
 
 print("*")
@@ -9,63 +9,63 @@ print("*")
 print("*")
 print("DRIPBOT IS LIVE")
 print("_________________________________________________________________________")
-
-#CAPTURES SCREENGRAB, SAVES TO SAME DIRECTORY
-call(["screencapture", "-R305,235,90,30", "test.png"])
-
-#PILLOW IMAGE MANIPULATION
-image = Image.open('test.png')
-image.show()
-
-image2 = image.resize((1920,1080))
-image2.show()
-
-#inv_image = ImageChops.invert(image)
-#inv_image.show()
-
-image.save('test1.png')
-image2.save('test2.png')
-#inv_image.save('test3.png')
-
-if image.mode == 'RGBA':
-    r,g,b,a = image.split()
-    rgb_image = Image.merge('RGB', (r,g,b))
-
-    inverted_image = PIL.ImageOps.invert(rgb_image)
-
-    r2,g2,b2 = inverted_image.split()
-
-    final_transparent_image = Image.merge('RGBA', (r2,g2,b2,a))
-
-    final_transparent_image.save('test4.png')
-
-else:
-    inverted_image = PIL.ImageOps.invert(image)
-    inverted_image.save('test4.png')
-
-image4 = Image.open('test4.png')
-image4.show()
-
-#OCR ANALYZES SCREENGRAB AND PROVIDES A .TXT FILE INTERPRETATION IN THE SAME DIRECTORY
-os.system('tesseract test1.png test1')
-os.system('tesseract test2.png test2')
-#os.system('tesseract test3.png tess.txt')
-os.system('tesseract test4.png test4')
+call(["screencapture", "-R390,280,150,50", "test.jpg"])
 
 
-#CONVERTS IMAGE TO GRAYSCALEs
+image = Image.open('test.jpg')
+new_image = image.resize((250, 50))
+new_image.save("test.png")
+
+
+#CAPTURES A SCREEN GRAB OF CURRENT BALANCE
+# Captures area of screen
+#CONVERTS IMAGE TO GRAYSCALE
 def black_and_white(input_image_path, output_image_path):
    color_image = Image.open(input_image_path)
    bw = color_image.convert('L')
    bw.save(output_image_path)
 
-#if __name__ == '__main__':
-#    black_and_white('screenshot2.jpg','bw3_screenshot.jpg')
+def invert_colors(image):
+    image = Image.open('test1.png')
+    inverted_image = PIL.ImageOps.invert(image)
+    inverted_image.save('test2.png')
 
-#EXAMPLE LOOP
+def resize_image():
+    basewidth = 500
+    img = Image.open('test2.png')
+    wpercent = (basewidth/float(img.size[0]))
+    hsize = int((float(img.size[1])*float(wpercent)))
+    img = img.resize((basewidth,hsize), Image.ANTIALIAS)
+    img.save('test3.png')
+
+def adjust_resolution():
+    image_path = "test3.png"
+    image_file = Image.open(image_path)
+    image_file.save("test4.png", dpi=(500,500))
+
+def tess_run():
+    os.system("tesseract test4.png --psm 6")
+
+#OCR ANALYZES SCREENGRAB AND PROVIDES A .TXT FILE INTERPRETATION IN THE SAME DIRECTORY
+
+#if __name__ == '__main__':
+if __name__ == '__main__':
+    x = black_and_white("test.png", "test1.png")
+    invert_colors(x)
+    resize_image()
+    adjust_resolution()
+    tess_run()
+
+
+
+
+#    black_and_white('screenshot2.jpg','bw3_screenshot.jpg'
+
 #re-bet coordinates: (1167,420)
 #re-betx2 coordinates: (1154,544)
 #pyautogui example syntax: pyautogui.click(x=1154, y=5444, clicks=1, interval=20, button='left')
+
+#EXAMPLE FOR LOOP
 #x = 0
 #while x < 10:
 #    pyautogui.click(x=1154, y=544, clicks=1, button='left')
