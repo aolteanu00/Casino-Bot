@@ -1,21 +1,20 @@
 from subprocess import call
 import os
 import pyautogui
-from PIL import Image
+from PIL import Image, ImageOps
 
 print("*")
 print("*")
 print("*")
 print("DRIPBOT IS LIVE")
 print("_________________________________________________________________________")
-call(["screencapture", "-R305,235,90,30", "test.jpg"])
+call(["screencapture", "-R390,280,150,50", "test.jpg"])
 
 
 image = Image.open('test.jpg')
-new_image = image.resize((1024, 1024))
-image.show()
+new_image = image.resize((250, 50))
+new_image.save("test.png")
 
-image.save('test1.png')
 
 #CAPTURES A SCREEN GRAB OF CURRENT BALANCE
 # Captures area of screen
@@ -25,12 +24,22 @@ def black_and_white(input_image_path, output_image_path):
    bw = color_image.convert('L')
    bw.save(output_image_path)
 
+def image_inversion(inv_image, output_path):
+    img = Image.open(inv_image)
+    img = PIL.ImageChops.invert(inv_image)
+    img.save(output_path)
 #OCR ANALYZES SCREENGRAB AND PROVIDES A .TXT FILE INTERPRETATION IN THE SAME DIRECTORY
-os.system('tesseract test1.png --psm 6')
 
 
 #if __name__ == '__main__':
-#    black_and_white('screenshot2.jpg','bw3_screenshot.jpg')
+if __name__ == '__main__':
+    black_and_white("test.png", "test1.png")
+    image_inversion("test1.png", "test2.png")
+
+os.system('tesseract test2.png --psm 6')
+
+
+#    black_and_white('screenshot2.jpg','bw3_screenshot.jpg'
 
 #re-bet coordinates: (1167,420)
 #re-betx2 coordinates: (1154,544)
