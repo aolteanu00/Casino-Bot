@@ -2,28 +2,7 @@ from subprocess import call
 import os
 import pyautogui
 from PIL import Image, ImageChops
-import tempfile
-
-
-
-def set_image_dpi_resize(image):
-    """
-    Rescaling image to 300dpi while resizing
-    :param image: An image
-    :return: A rescaled image
-    """
-    length_x, width_y = image.size
-    factor = min(1, float(1024.0 / length_x))
-    size = int(factor * length_x), int(factor * width_y)
-    image_resize = image.resize(size, Image.ANTIALIAS)
-    temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='1.png')
-    temp_filename = temp_file.name
-    image_resize.save(temp_filename, dpi=(300, 300))
-    return temp_filename
-
-
-
-
+import PIL.ImageOps
 
 print("*")
 print("*")
@@ -37,30 +16,41 @@ call(["screencapture", "-R305,235,90,30", "test.png"])
 #PILLOW IMAGE MANIPULATION
 image = Image.open('test.png')
 image.show()
-image.show('test.png')
+
 image2 = image.resize((1920,1080))
 image2.show()
-inv_image = ImageChops.invert(image)
-inv_image.show()
 
-image3 = set_image_dpi_resize(image)
-print(image3)
+#inv_image = ImageChops.invert(image)
+#inv_image.show()
 
 image.save('test1.png')
 image2.save('test2.png')
-inv_image.save('test3.png')
+#inv_image.save('test3.png')
 
-image2.show()
-inv_image.show()
+if image.mode == 'RGBA':
+    r,g,b,a = image.split()
+    rgb_image = Image.merge('RGB', (r,g,b))
+
+    inverted_image = PIL.ImageOps.invert(rgb_image)
+
+    r2,g2,b2 = inverted_image.split()
+
+    final_transparent_image = Image.merge('RGBA', (r2,g2,b2,a))
+
+    final_transparent_image.save('test4.png')
+
+else:
+    inverted_image = PIL.ImageOps.invert(image)
+    inverted_image.save('test4.png')
+
+image4 = Image.open('test4.png')
+image4.show()
 
 #OCR ANALYZES SCREENGRAB AND PROVIDES A .TXT FILE INTERPRETATION IN THE SAME DIRECTORY
-os.system('tesseract test1.png tess.txt')
-os.system('tesseract test2.png tess.txt')
-os.system('tesseract test3.png tess.txt')
-
-
-
-
+os.system('tesseract test1.png test1')
+os.system('tesseract test2.png test2')
+#os.system('tesseract test3.png tess.txt')
+os.system('tesseract test4.png test4')
 
 
 #CONVERTS IMAGE TO GRAYSCALEs
