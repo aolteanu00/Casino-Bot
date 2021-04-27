@@ -2,6 +2,28 @@ from subprocess import call
 import os
 import pyautogui
 from PIL import Image, ImageChops
+import tempfile
+
+
+
+def set_image_dpi_resize(image):
+    """
+    Rescaling image to 300dpi while resizing
+    :param image: An image
+    :return: A rescaled image
+    """
+    length_x, width_y = image.size
+    factor = min(1, float(1024.0 / length_x))
+    size = int(factor * length_x), int(factor * width_y)
+    image_resize = image.resize(size, Image.ANTIALIAS)
+    temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='1.png')
+    temp_filename = temp_file.name
+    image_resize.save(temp_filename, dpi=(300, 300))
+    return temp_filename
+
+
+
+
 
 print("*")
 print("*")
@@ -10,16 +32,19 @@ print("DRIPBOT IS LIVE")
 print("_________________________________________________________________________")
 
 #CAPTURES SCREENGRAB, SAVES TO SAME DIRECTORY
-call(["screencapture", "-R305,235,90,30", "test.pdf"])
+call(["screencapture", "-R305,235,90,30", "test.png"])
 
 #PILLOW IMAGE MANIPULATION
-image = Image.open('test.pdf')
+image = Image.open('test.png')
 image.show()
-image.show('test.pdf')
+image.show('test.png')
 image2 = image.resize((1920,1080))
 image2.show()
 inv_image = ImageChops.invert(image)
 inv_image.show()
+
+image3 = set_image_dpi_resize(image)
+print(image3)
 
 image.save('test1.png')
 image2.save('test2.png')
@@ -32,10 +57,6 @@ inv_image.show()
 os.system('tesseract test1.png tess.txt')
 os.system('tesseract test2.png tess.txt')
 os.system('tesseract test3.png tess.txt')
-
-
-
-
 
 
 
