@@ -44,8 +44,8 @@ def adjust_resolution():
     image_file.save("test4.png", dpi=(500,500))
 
 def tess_run():
-    os.system("tesseract test4.png --psm 6")
-    file_in = open('--psm.txt', 'r')
+    os.system("tesseract test4.png tess 6")
+    file_in = open('tess.txt', 'r')
     y = file_in.read().split(',')
     w = ''.join(y)
     r = w.replace('\n\x0c', '')
