@@ -11,7 +11,7 @@ print("DRIPBOT IS LIVE")
 print("_________________________________________________________________________")
 call(["screencapture", "-R390,280,150,50", "test.jpg"])
 
-
+balance_list = []
 image = Image.open('test.jpg')
 new_image = image.resize((250, 50))
 new_image.save("test.png")
@@ -45,16 +45,28 @@ def adjust_resolution():
 
 def tess_run():
     os.system("tesseract test4.png --psm 6")
+    file_in = open('--psm.txt', 'r')
+    y = file_in.read().split(',')
+    w = ''.join(y)
+    r = w.replace('\n\x0c', '')
+    q = float(r)
+    z = balance_list.append(q)
+    print(balance_list)
+
 
 #OCR ANALYZES SCREENGRAB AND PROVIDES A .TXT FILE INTERPRETATION IN THE SAME DIRECTORY
 
 #if __name__ == '__main__':
-if __name__ == '__main__':
-    x = black_and_white("test.png", "test1.png")
-    invert_colors(x)
-    resize_image()
-    adjust_resolution()
-    tess_run()
+i = 0
+while i < 4:
+
+    if __name__ == '__main__':
+        x = black_and_white("test.png", "test1.png")
+        invert_colors(x)
+        resize_image()
+        adjust_resolution()
+        tess_run()
+    i += 1
 
 
 
