@@ -59,6 +59,7 @@ if __name__ == '__main__':
 
 
 
+
 #    black_and_white('screenshot2.jpg','bw3_screenshot.jpg'
 
 #re-bet coordinates: (1167,420)
