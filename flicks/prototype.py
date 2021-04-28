@@ -3,30 +3,38 @@ import os
 import pyautogui
 from PIL import Image
 import PIL.ImageOps
+import time
+import random
 
 print("*")
 print("*")
 print("*")
 print("DRIPBOT IS LIVE")
 print("_________________________________________________________________________")
-balance_list = []
-num_loss = 0
+list = []
+#num_loss = 0
+time_list = [7, 7.5, 8, 8.5, 9, 10, 10.5, 8.2]
 
 #pyautogui functions
 def chip():
     pyautogui.click(x=691, y=887, clicks=1, button='left')
+    pyautogui.click(x=691, y=887, clicks=1, button='left')
 
 def player():
     pyautogui.click(x=714, y=613, clicks=1, button='left')
+    pyautogui.click(x=714, y=613, clicks=1, button='left')
 
 def deal():
-    pyautogui.click(x=1564, y=616, clicks=1, button='left')
+    pyautogui.click(x=1564, y=616, clicks=1, interval=2, button='left')
+    pyautogui.click(x=1564, y=616, clicks=1, interval=2, button='left')
 
 def re_bet():
-    pyautogui.click(x=1560, y=528, clicks=1, button='left')
+    pyautogui.click(x=1560, y=528, clicks=2, button='left')
+    pyautogui.click(x=1560, y=528, clicks=2, button='left')
 
 def re_bet2x():
-    pyautogui.click(x=1561, y=703, clicks=1, button='left')
+    pyautogui.click(x=1561, y=703, clicks=2, button='left')
+    pyautogui.click(x=1561, y=703, clicks=2, button='left')
 
 #image functions
 def screengrab():
@@ -66,17 +74,48 @@ def tess_run():
     w = ''.join(y)
     r = w.replace('\n\x0c', '')
     q = float(r)
-    z = balance_list.append(q)
-    print(balance_list)
+    z = list.append(q)
+    print(list)
+
+#bet
+def bet():
+    if list[-2] < list[-1]:
+        player()
+        deal()
+        #num_loss = 0
+    if list[-2] > list[-1]:
+        re_bet2x()
+        #num_loss = num_loss + 1
+    else:
+        re_bet()
+    x = random.choice(time_list)
+    time.sleep(x)
+
+def image_func():
+    screengrab()
+    x = black_and_white("test.png", "test1.png")
+    invert_colors(x)
+    resize_image()
+    adjust_resolution()
+    tess_run()
 
 def start_game():
+    image_func()
+    chip()
+    player()
+    deal()
 
-    if __name__ == '__main__':
-        x = black_and_white("test.png", "test1.png")
-        invert_colors(x)
-        resize_image()
-        adjust_resolution()
-        tess_run()
+def body():
+    x = 0
+    while x < 5:
+        image_func()
+        bet()
+
+start_game()
+body()
+
+
+
 
 print("_________________________________________________________________________")
 print("DRIPBOT OUT")
