@@ -11,9 +11,9 @@ print("*")
 print("*")
 print("DRIPBOT IS LIVE")
 print("_________________________________________________________________________")
-list = []
+list = ["z", 'x']
 #num_loss = 0
-time_list = [7, 7.5, 8, 8.5, 9, 10, 10.5, 8.2]
+time_list = [14.6, 14.7, 14.8, 14.9, 15.1, 15.1, 15.3, 15.4, 15.5, 15.6, 15.7, 15.8, 15.9]
 
 #pyautogui functions
 def chip():
@@ -42,6 +42,7 @@ def screengrab():
     image = Image.open('test.jpg')
     new_image = image.resize((250, 50))
     new_image.save("test.png")
+
 
 def black_and_white(input_image_path, output_image_path):
    color_image = Image.open(input_image_path)
@@ -75,21 +76,31 @@ def tess_run():
     r = w.replace('\n\x0c', '')
     q = float(r)
     z = list.append(q)
-    print(list)
+
 
 #bet
 def bet():
-    if list[-2] < list[-1]:
+    all_in = 0
+    if list[-1] > list[-2]:
         player()
         deal()
+        all_in = 0
+        list.pop(-3)
         #num_loss = 0
-    if list[-2] > list[-1]:
+    if list[-1] < list[-2]:
         re_bet2x()
+        all_in += 1
+        list.pop(-3)
         #num_loss = num_loss + 1
+    if all_in > 9:
+        pyautogui.click(x=1128, y=892, clicks=1, button='left')
+        player()
+        deal()
+        list.pop(-3)
     else:
         re_bet()
     x = random.choice(time_list)
-    time.sleep(x)
+
 
 def image_func():
     screengrab()
@@ -99,21 +110,32 @@ def image_func():
     adjust_resolution()
     tess_run()
 
+
 def start_game():
     image_func()
     chip()
     player()
     deal()
+    list.pop(-3)
+    time.sleep(8)
 
 def body():
-    x = 0
-    while x < 5:
-        image_func()
-        bet()
+    image_func()
+    bet()
 
-start_game()
-body()
 
+
+
+i = 0
+while i < 1:
+    start_game()
+    i += 1
+i2 = 0
+while i2 < 7200:
+    body()
+    i2 += 1
+    print(list)
+    time.sleep(15)
 
 
 
