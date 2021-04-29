@@ -99,7 +99,7 @@ def bet():
         list.pop(-3)
     else:
         re_bet()
-    x = random.choice(time_list)
+
 
 
 def image_func():
@@ -135,7 +135,8 @@ while i2 < 7200:
     body()
     i2 += 1
     print(list)
-    time.sleep(15)
+    x = random.choice(time_list)
+    time.sleep(x)
 
 
 
