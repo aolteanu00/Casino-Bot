@@ -81,6 +81,11 @@ def tess_run():
 #bet
 def bet():
     all_in = 0
+    if all_in == 9:
+        pyautogui.click(x=1128, y=892, clicks=1, button='left')
+        player()
+        deal()
+        list.pop(-3)
     if list[-1] > list[-2]:
         player()
         deal()
@@ -92,13 +97,10 @@ def bet():
         all_in += 1
         list.pop(-3)
         #num_loss = num_loss + 1
-    if all_in > 9:
-        pyautogui.click(x=1128, y=892, clicks=1, button='left')
-        player()
-        deal()
-        list.pop(-3)
+
     else:
         re_bet()
+        list.pop(-3)
 
 
 
