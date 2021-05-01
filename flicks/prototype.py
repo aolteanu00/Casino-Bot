@@ -6,6 +6,12 @@ import PIL.ImageOps
 import time
 import random
 
+print("DISCLAIMER:\n“DRIPBOT” is a program scripted with Python to automate the online card game “Baccarat”. Be advised, using “DRIPBOT” is not a guarantee that the user will make profit, rather “DRIPBOT” supplies the uses with potential profit by utilizing the Martingale theory to create profit slowly over an extended period of time. Furthermore, “Baccarat” is a game created to gamble, thus there is a possibility that the user can lose money as well as gain money over time. Finally,the Martingale theory will at some point lose all the user’s money, so the user must determine an acceptable profit margin.")
+print("TERMS OF SERVICE:\n1.“DRIPBOT” can only be distributed by its creators: Dominic Esposito and Alex Olteanu\n2.Download, install, and run a VPN before using “DRIPBOT” as gambling websites may flag the users IP address if “DRIPBOT” is used to frequently\n3.When asked to “Enter the money you want to make:”, the user should only enter an amount the user believes 'DRIPBOT' is capable of reaching\n4.Before using “DRIPBOT” with real money, we (the creators) strongly advise the user to run “DRIPBOT” in a practice mode without real money first\n5.If the user isntalls 'DRIPBOT' without auhtorization from creators Dominic Esposito or Alex Olteanu 'DIPBOT' will be deleted off users computer and no refind will be given")
+input("Please type your initials once you read and agree to the disclaimer and the terms of serivce: ")
+
+
+
 print("*")
 print("*")
 print("*")
