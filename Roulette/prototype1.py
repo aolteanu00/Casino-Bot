@@ -9,7 +9,7 @@ import random
 print("*")
 print("*")
 print("*")
-print("DRIPBOT IS LIVE")
+print("DRIPBOT#2 IS LIVE")
 print("_________________________________________________________________________")
 start_balance = int(input('Enter starting amount: '))
 money_make = int(input('Enter the amount you want to make: '))
@@ -17,34 +17,34 @@ stop_loss = start_balance + money_make
 print(stop_loss)
 list = ["z", 'x']
 #num_loss = 0
-time_list = [14.6, 14.7, 14.8, 14.9, 15.1, 15.1, 15.3, 15.4, 15.5, 15.6, 15.7, 15.8, 15.9]
+time_list = [15]
 
 #pyautogui functions
 def chip():
-    pyautogui.click(x=691, y=887, clicks=1, button='left')
-    pyautogui.click(x=691, y=887, clicks=1, button='left')
+    pyautogui.click(x=797, y=874, clicks=1, button='left')
+    pyautogui.click(x=797, y=874, clicks=1, button='left')
 
-def player():
-    pyautogui.click(x=714, y=613, clicks=1, button='left')
-    pyautogui.click(x=714, y=613, clicks=1, button='left')
+def black():
+    pyautogui.click(x=1319, y=634, clicks=1, button='left')
+    pyautogui.click(x=1319, y=634, clicks=1, button='left')
 
-def deal():
-    pyautogui.click(x=1564, y=616, clicks=1, interval=2, button='left')
-    pyautogui.click(x=1564, y=616, clicks=1, interval=2, button='left')
+def spin():
+    pyautogui.click(x=1413, y=871, clicks=1, interval=2, button='left')
+    pyautogui.click(x=1413, y=871, clicks=1, button='left')
 
 def re_bet():
-    pyautogui.click(x=1560, y=528, clicks=2, button='left')
-    pyautogui.click(x=1560, y=528, clicks=2, button='left')
+    pyautogui.click(x=1311, y=873, clicks=1, button='left')
+    pyautogui.click(x=1311, y=873, clicks=1, interval=2, button='left')
 
 def re_bet2x():
-    pyautogui.click(x=1561, y=703, clicks=2, button='left')
-    pyautogui.click(x=1561, y=703, clicks=2, button='left')
+    pyautogui.click(x=1331, y=873, clicks=1, button='left')
+    pyautogui.click(x=1331, y=873, clicks=1, button='left')
 
 #image functions
 def screengrab():
-    call(["screencapture", "-R390,280,150,50", "test.jpg"])
+    call(["screencapture", "-R348,961,70,20", "test.jpg"])
     image = Image.open('test.jpg')
-    new_image = image.resize((250, 50))
+    new_image = image.resize((200, 50))
     new_image.save("test.png")
 
 
@@ -84,28 +84,17 @@ def tess_run():
 
 #bet
 def bet():
-    all_in = 0
-    if all_in == 9:
-        pyautogui.click(x=1128, y=892, clicks=1, button='left')
-        player()
-        deal()
-        list.pop(-3)
     if list[-1] > list[-2]:
-        player()
-        deal()
-        all_in = 0
+        black()
+        spin()
         list.pop(-3)
         #num_loss = 0
     if list[-1] < list[-2]:
+        re_bet()
         re_bet2x()
-        all_in += 1
+        spin()
         list.pop(-3)
         #num_loss = num_loss + 1
-
-    else:
-        re_bet()
-        list.pop(-3)
-
 
 
 def image_func():
@@ -116,20 +105,17 @@ def image_func():
     adjust_resolution()
     tess_run()
 
-
 def start_game():
     image_func()
     chip()
-    player()
-    deal()
+    black()
+    spin()
     list.pop(-3)
-    time.sleep(8)
+    time.sleep(13)
 
 def body():
     image_func()
     bet()
-
-
 
 
 i = 0
@@ -145,9 +131,8 @@ while list[-1] < stop_loss:
 
 
 
-
 print("_________________________________________________________________________")
-print("DRIPBOT OUT")
+print("DRIPBOT#2 OUT")
 print("*")
 print("*")
 print("*")

@@ -1,5 +1,7 @@
 x = []
-file_in = open('--psm.txt', 'r')
+file_in = open('tess.txt', 'r')
+
+
 y = file_in.read().split(',')
 w = ''.join(y)
 r = w.replace('\n\x0c', '')
