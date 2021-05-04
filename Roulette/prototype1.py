@@ -1,3 +1,4 @@
+#IMPORT STATEMENTS
 from subprocess import call
 import os
 import pyautogui
@@ -5,13 +6,12 @@ from PIL import Image
 import PIL.ImageOps
 import time
 import random
+
+#USER IMMERSION
 print("DISCLAIMER:\n“DRIPBOT#2” is a program scripted with Python to automate the online card game “Roulette”. Be advised, using “DRIPBOT#2” is not a guarantee that the user will make profit, rather “DRIPBOT#2” supplies the uses with potential profit by utilizing the Martingale theory to create profit slowly over an extended period of time. Furthermore, “Roulette” is a game created to gamble, thus there is a possibility that the user can lose money as well as gain money over time. Finally,the Martingale theory will at some point lose all the user’s money, so the user must determine an acceptable profit margin.")
 print("TERMS OF SERVICE:\n1.“DRIPBOT#2” can only be distributed by its creators: Dominic Esposito and Alex Olteanu\n2.Download, install, and run a VPN before using “DRIPBOT#2” as gambling websites may flag the users IP address if “DRIPBOT#2” is used to frequently\n3.When asked to “Enter the money you want to make:”, the user should only enter an amount the user believes 'DRIPBOT#2' is capable of reaching\n4.Before using “DRIPBOT#2” with real money, we (the creators) strongly advise the user to run “DRIPBOT#2” in a practice mode without real money first\n5.If the user isntalls 'DRIPBOT#2' without auhtorization from creators Dominic Esposito or Alex Olteanu 'DIPBOT#2' will be deleted off users computer and no refind will be given")
 input("Please type your initials once you read and agree to the disclaimer and the terms of serivce: ")
 
-print("*")
-print("*")
-print("*")
 print("DRIPBOT#2 IS LIVE")
 print("_________________________________________________________________________")
 start_balance = int(input('Enter starting amount: '))
@@ -136,6 +136,3 @@ while list[-1] < stop_loss:
 
 print("_________________________________________________________________________")
 print("DRIPBOT#2 OUT")
-print("*")
-print("*")
-print("*")
