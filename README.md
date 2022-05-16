@@ -1,4 +1,4 @@
-Program that uses simple algorithmns and "computer vision" to automate playing point-based browser games.
+Python script that automates playing Baccarat on select fixed-chance gaming websites.
 
 Modules used: numpy, pyautogui, pytesseract, pil/pillow/image, opencv/cv2, subprocess, os.
   
