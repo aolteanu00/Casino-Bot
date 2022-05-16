@@ -1,5 +1,4 @@
-# Bot
-Chopping it up with python scripts
+Program that uses simple algorithmns and "computer vision" to automate playing point-based browser games.
 
 Modules used:
   numpy
